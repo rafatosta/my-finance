@@ -5,3 +5,5 @@ type Trasaction = {
   type: TypeTransaction;
   value: number;
 };
+
+export default Trasaction;
