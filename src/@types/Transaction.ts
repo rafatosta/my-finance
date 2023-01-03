@@ -1,9 +1,11 @@
 type TypeTransaction = "despesa" | "receita";
 
 type Trasaction = {
-  name: string;
-  type: TypeTransaction;
+  id: number;
+  description: string;
   value: number;
+  type: TypeTransaction;
+  date: string;
 };
 
 export default Trasaction;
