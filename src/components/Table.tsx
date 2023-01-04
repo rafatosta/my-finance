@@ -12,7 +12,6 @@ function Table(props: TableProps) {
       <table className="table-fixed w-full">
         <thead>
           <tr>
-            <CellHeader>#</CellHeader>
             <CellHeader>Descrição</CellHeader>
             <CellHeader>Valor</CellHeader>
             <CellHeader>Tipo</CellHeader>
@@ -24,7 +23,7 @@ function Table(props: TableProps) {
           {props.data.map((item) => {
             return (
               <tr key={item.id} className="hover:scale-[1.01]">
-                <Cell>{item.id}</Cell>
+               
                 <Cell>{item.description}</Cell>
                 <Cell>{item.value}</Cell>
                 <Cell
