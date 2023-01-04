@@ -8,7 +8,7 @@ type TableProps = {
 
 function Table(props: TableProps) {
   return (
-    <div className="rounded-xl border shadow-xl py-2">
+    <div className="rounded-xl border shadow-xl py-2 w-full">
       <table className="table-fixed w-full">
         <thead>
           <tr>
@@ -17,7 +17,7 @@ function Table(props: TableProps) {
             <CellHeader>Valor</CellHeader>
             <CellHeader>Tipo</CellHeader>
             <CellHeader>Data</CellHeader>
-            <CellHeader>Remover</CellHeader>
+            <CellHeader></CellHeader>
           </tr>
         </thead>
         <tbody>
@@ -28,7 +28,7 @@ function Table(props: TableProps) {
                 <Cell>{item.description}</Cell>
                 <Cell>{item.value}</Cell>
                 <Cell
-                  className={
+                  className= {
                     item.type === "receita" ? "text-green-600" : "text-red-600"
                   }  
                 >
