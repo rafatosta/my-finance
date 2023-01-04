@@ -1,6 +1,6 @@
 type CardValueProps = {
   title: string;
-  value: string;
+  value: number;
   type: "r" | "d" | "t";
 };
 
