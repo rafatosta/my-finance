@@ -3,13 +3,10 @@ import tw from "tailwind-styled-components";
 
 type TableProps = {
   data: Transaction[];
+  onDelete: (item: Transaction) => void;
 };
 
 function Table(props: TableProps) {
-  function handleDelete(item: Transaction) {
-    console.log(item);
-  }
-
   return (
     <div className="rounded-xl border shadow-xl py-2">
       <table className="table-fixed w-full">
@@ -30,10 +27,16 @@ function Table(props: TableProps) {
                 <Cell>{item.id}</Cell>
                 <Cell>{item.description}</Cell>
                 <Cell>{item.value}</Cell>
-                <Cell>{item.type}</Cell>
+                <Cell
+                  className={
+                    item.type === "receita" ? "text-green-600" : "text-red-600"
+                  }  
+                >
+                  {item.type}
+                </Cell>
                 <Cell>{item.date}</Cell>
                 <Cell className="hover:text-red-700">
-                  <button onClick={() => handleDelete(item)}>
+                  <button onClick={() => props.onDelete(item)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

@@ -2,7 +2,7 @@ import CardValue from "./components/CardValue";
 import Table from "./components/Table";
 import Transaction from "./@types/Transaction";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const listApi: Transaction[] = [
@@ -10,14 +10,14 @@ function App() {
       id: 0,
       description: "carro",
       value: 200,
-      type: "receita",
+      type: "despesa",
       date: "03/01/2023",
     },
     {
       id: 1,
       description: "salário",
       value: 1200,
-      type: "despesa",
+      type: "receita",
       date: "03/01/2023",
     },
     {
@@ -36,11 +36,11 @@ function App() {
     },
   ];
 
-  const [list, setList] = useState<Transaction[]>([]);
+  const [list, setList] = useState<Transaction[]>(listApi);
 
-  const [idLast, setIdLast] = useState<number>(0);
-  const [despesa, setDespesa] = useState<number>(0);
-  const [receita, setReceita] = useState<number>(0);
+  const [idLast, setIdLast] = useState<number>(5);
+  const [despesa, setDespesa] = useState<number>(900);
+  const [receita, setReceita] = useState<number>(1200);
 
   const { register, handleSubmit, reset } = useForm<Transaction>();
 
@@ -55,6 +55,12 @@ function App() {
     setList([...list, data]);
     reset();
   }
+
+  function onDelete(data: Transaction) {
+    list.splice(list.indexOf(data), 1)
+    setList([...list]);
+  }
+
 
   return (
     <div className="flex flex-row w-full h-screen justify-center">
@@ -106,7 +112,12 @@ function App() {
         </div>
 
         <div className="flex justify-center">
-          <Table data={list} />
+          <Table
+            data={list}
+            onDelete={(data) => {
+              onDelete(data);
+            }}
+          />
         </div>
       </div>
     </div>
