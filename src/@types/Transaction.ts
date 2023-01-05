@@ -5,7 +5,6 @@ type Trasaction = {
   description: string;
   value: number;
   type: TypeTransaction;
-  date: string;
 };
 
 export default Trasaction;
