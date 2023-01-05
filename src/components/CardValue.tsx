@@ -14,9 +14,9 @@ function CardValue(props: CardValueProps) {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-40 h-20 sm:w-40 sm:h-40 hover:scale-[1.1] rounded-xl shadow-xl ${color}`}
+      className={`flex flex-col items-start justify-center px-2 py-1 w-full h-full rounded-md shadow-xl ${color}`}
     >
-      <div className="text-gray-100 font-semibold text-xl">{props.title}</div>
+      <div className="text-[#1E1E1E] font-semibold text-xl">{props.title}</div>
       <div className="text-white font-bold text-xl sm:text-4xl drop-shadow-lg">
         R$ {props.value}
       </div>
