@@ -3,38 +3,73 @@ import tw from "tailwind-styled-components";
 
 type TableProps = {
   data: Transaction[];
-  onDelete: (item: Transaction) => void;
+  onDelete?: (item: Transaction) => void;
 };
 
 function Table(props: TableProps) {
   return (
-    <div className="rounded-xl border shadow-xl py-2 w-full">
-      <table className="table-fixed w-full">
+    <div className="block w-full overflow-x-auto">
+      <table className="table-auto items-center w-full bg-transparent border-collapse">
         <thead>
           <tr>
-            <CellHeader>Descrição</CellHeader>
+            <CellHeader className="w-2">Tipo</CellHeader>
+            <CellHeader>Desrição</CellHeader>
             <CellHeader>Valor</CellHeader>
-            <CellHeader>Tipo</CellHeader>
-            <CellHeader>Data</CellHeader>
-            <CellHeader></CellHeader>
+            <CellHeader className="w-2">Ações</CellHeader>
           </tr>
         </thead>
         <tbody>
-          {props.data.map((item) => {
+          {props.data?.map((item) => {
             return (
-              <tr key={item.id} className="hover:scale-[1.01]">
-               
-                <Cell>{item.description}</Cell>
-                <Cell>{item.value}</Cell>
+              <tr key={item.id}>
                 <Cell
-                  className= {
+                  className={`text-center font-bold ${
                     item.type === "receita" ? "text-green-600" : "text-red-600"
-                  }  
+                  } `}
                 >
-                  {item.type}
+                  {item.type === "receita" ? (
+                    <div className="flex flex-col items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 19.5v-15m0 0l-6.75 6.75M12 4.5l6.75 6.75"
+                        />
+                      </svg>
+
+                      <span>Receita</span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-4"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M12 4.5v15m0 0l6.75-6.75M12 19.5l-6.75-6.75"
+                        />
+                      </svg>
+
+                      <span>Despesa</span>
+                    </div>
+                  )}
                 </Cell>
-                <Cell>{item.date}</Cell>
-                <Cell className="hover:text-red-700">
+                <Cell>{item.description}</Cell>
+                <Cell>R$ {item.value}</Cell>
+                <Cell className="hover:text-red-700 text-center">
                   <button onClick={() => props.onDelete(item)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +77,7 @@ function Table(props: TableProps) {
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="w-6 h-6"
+                      className="w-5 h-5"
                     >
                       <path
                         strokeLinecap="round"
@@ -62,11 +97,11 @@ function Table(props: TableProps) {
 }
 
 const CellHeader = tw.th`
-table-cell px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider align-middle
+px-6 align-middle border border-2 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-[#242424] text-white border-[#1E1E1E]
 `;
 
 const Cell = tw.td`
-table-cell px-5 py-3 border-b border-gray-200 bg-white text-sm w-2/5 align-middle text-center capitalize
+border-t-0 px-6 align-middle border-l-0 border-r-0 text-sm font-bold whitespace-nowrap p-4 capitalize text-left
 `;
 
 export default Table;
