@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 
 type TableProps = {
   data: Transaction[];
-  onDelete?: (item: Transaction) => void;
+  onDelete: (item: Transaction) => void;
 };
 
 function Table(props: TableProps) {
