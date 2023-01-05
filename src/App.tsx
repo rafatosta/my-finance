@@ -54,7 +54,9 @@ function App() {
             </div>
 
             {data.length == 0 ? (
-              <div className="text-center p-4 text-gray-400">Sem lançamentos</div>
+              <div className="text-center p-4 text-gray-400">
+                Sem lançamentos
+              </div>
             ) : (
               <Table
                 data={data}
@@ -93,28 +95,28 @@ function App() {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-lg transform overflow-hidden rounded-2xl bg-[#242424] p-6 text-left align-middle shadow-xl transition-all">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-bold leading-6 text-gray-900"
+                      className="text-lg font-bold leading-6 text-white"
                     >
                       Nova transação
                     </Dialog.Title>
                     <div className="mt-4">
                       <div>
                         <form
-                          className="flex flex-col bg-white gap-y-4"
+                          className="flex flex-col bg-[#242424] gap-y-4"
                           onSubmit={handleSubmit(handleSave)}
                         >
                           <input
-                            className="p-2 border rounded-sm"
+                            className="p-2 border rounded-sm bg-[#1E1E1E] text-white"
                             type="text"
                             required
                             placeholder="Descrição"
                             {...register("description")}
                           />
                           <input
-                            className="p-2 border rounded-sm"
+                            className="p-2 border rounded-sm  bg-[#1E1E1E] text-white"
                             type="number"
                             required
                             placeholder="Valor"
@@ -123,7 +125,7 @@ function App() {
                             })}
                           />
                           <select
-                            className="p-2 border rounded-sm"
+                            className="p-2 border rounded-sm bg-[#1E1E1E] text-white"
                             {...register("type")}
                           >
                             <option value="receita">Receita</option>
@@ -140,7 +142,7 @@ function App() {
                             </button>
                             <button
                               type="submit"
-                              className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 w-24 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                              className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 w-24 px-4 py-2 text-sm font-bold text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                             >
                               Salvar
                             </button>
