@@ -1,6 +1,4 @@
-# MyFinance
-
-## Controle de finanças pessoais feito em React + TailwindCSS
+# MyFinance: Controle de finanças pessoais feito em React + TailwindCSS
 
 <h1 align="center">
   <img alt="Logo" title="logo.app" src=".github/screen.png" />
